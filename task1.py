@@ -52,9 +52,49 @@ def running_sum(some_list: list):
 # print(running_sum([1,2,3,4,5]))
 
 
-def unzip_list(zipped_list: list):
-    # Пишите ваш код здесь
-    
+def unzip_list(zipped_list: list[str]) -> list[int]:
+    res = []
+    for item in zipped_list:
+        splitted = item.split('|')
+        if(len(splitted) == 1):
+            res.append(int(item))
+        else:
+            for i in range(int(splitted[0])):
+                res.append(int(splitted[1]))
+    return res
+
+# print("2".split("|"))
+
+def zip_list(some_list: list):
+    # Пипите код здесь
     pass
 
-print("2".split("|"))
+# print(zip_list([0,1,1,1,2,3,3,4,4,4,4]))
+
+def c_crypt(msg: str, shift: int, alph: str) -> str:
+    
+    if shift == 0:
+        return msg
+    
+    RU = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
+    EN = "abcdefghijklmnopqrstuvwxyz"
+    
+    if alph == 'ru':
+        alphabet = RU 
+    else:
+        alphabet = EN 
+        
+    shift = shift%len(alphabet)
+    
+    if shift < 0:
+        alphabet = alphabet[-shift:] + alphabet[0:-shift]
+    else:
+        alphabet = alphabet[0:-shift] + alphabet[-shift:]
+    
+    print(alphabet)
+    
+    trans_table = str.maketrans(alphabet)
+    
+    return msg.translate(trans_table)
+
+print(c_crypt("aaafvdfddfdf",5,"en"))
