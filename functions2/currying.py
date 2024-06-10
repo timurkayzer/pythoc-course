@@ -14,3 +14,8 @@ tax_to_beef = partial(tax_for_purchases, tax=BEEF_TAX, product=BEEF)
 
 print(tax_to_beef(amount=100))
 print(tax_to_milk(amount=100))
+
+
+my_print = partial(print,sep="^",end="\n")
+
+my_print("a","A","b")
