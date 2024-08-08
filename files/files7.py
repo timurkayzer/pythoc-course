@@ -17,4 +17,5 @@ with open('files/username.csv') as file:
         writer = csv.DictWriter(file_upd,fieldnames=header)
         writer.writeheader()
         for line in reader:
+            print(line)
             writer.writerow(line)
